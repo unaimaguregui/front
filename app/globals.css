@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0f172a; /* Fondo oscuro elegante (Slate 900) */
+  --color-foreground: #f8fafc; /* Texto blanco (Slate 50) */
+  --color-primary: #3b82f6; /* Azul moderno para botones (Sky 500) */
+  --color-panel: #1e293b; /* Paneles un poco más claros (Slate 800) */
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
