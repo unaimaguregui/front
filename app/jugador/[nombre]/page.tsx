@@ -97,7 +97,7 @@ function HistorialEvolutivo({ wyscoutId, posicion }: { wyscoutId: string, posici
   useEffect(() => {
     if (!wyscoutId) return;
     
-    fetch(`http://127.0.0.1:8000/api/evolucion/${wyscoutId}?posicion=${encodeURIComponent(posicion)}`)
+    fetch(`https://back-hssb.onrender.com/api/evolucion/${wyscoutId}?posicion=${encodeURIComponent(posicion)}`)
       .then((res) => {
         if (!res.ok) throw new Error("Sin datos históricos");
         return res.json();

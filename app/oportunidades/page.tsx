@@ -28,7 +28,7 @@ function RadarComparativo({ wyscoutId, posicion, tempPasada, tempActual, tipo }:
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/evolucion/${wyscoutId}?posicion=${encodeURIComponent(posicion)}`)
+    fetch(`https://back-hssb.onrender.com/api/evolucion/${wyscoutId}?posicion=${encodeURIComponent(posicion)}`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -169,7 +169,7 @@ export default function OportunidadesMercado() {
   useEffect(() => {
     async function fetchCatalogo() {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/catalogo");
+        const res = await fetch("https://back-hssb.onrender.com/api/catalogo");
         const data = await res.json();
         if (Array.isArray(data)) {
           const ligasUnicas = Array.from(new Set(data.map((d: any) => d.liga))) as string[];
@@ -211,8 +211,8 @@ export default function OportunidadesMercado() {
 
     try {
       const [resExp, resGan] = await Promise.all([
-        fetch("http://127.0.0.1:8000/api/explosiones", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
-        fetch("http://127.0.0.1:8000/api/gangas", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        fetch("https://back-hssb.onrender.com/api/explosiones", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
+        fetch("https://back-hssb.onrender.com/api/gangas", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       ]);
 
       const dataExp = await resExp.json();
