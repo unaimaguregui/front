@@ -39,14 +39,14 @@ export default function LaboratorioIAPage() {
 
   // Cargar catálogo y jugadores al inicio
   useEffect(() => {
-    fetch('http://localhost:8000/api/jugadores_totales')
+    fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/jugadores_totales')
       .then(r => r.json())
       .then(data => {
         if (Array.isArray(data)) setJugadoresLista(data.sort());
       })
       .catch((e) => console.error("Error cargando jugadores:", e));
 
-    fetch('http://localhost:8000/api/catalogo')
+    fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/catalogo')
       .then(r => r.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -116,7 +116,7 @@ export default function LaboratorioIAPage() {
     if (!jugadorObjetivo) return;
     setCargando(true); setModoActivo('clonador'); limpiarResultados();
     try {
-      const res = await fetch('http://localhost:8000/api/buscar_similares', {
+      const res = await fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/buscar_similares', {
         method: 'POST', headers: {'Content-Type': 'application/json'}, 
         // 🚀 AÑADIMOS "posicion: posicion" AQUÍ
         body: JSON.stringify({
@@ -137,7 +137,7 @@ export default function LaboratorioIAPage() {
     if (!jugadorObjetivo || !ligaDestino) return;
     setCargando(true); setModoActivo('traductor'); limpiarResultados();
     try {
-      const res = await fetch('http://localhost:8000/api/simular_traspaso', {
+      const res = await fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/simular_traspaso', {
         method: 'POST', headers: {'Content-Type': 'application/json'}, 
         body: JSON.stringify({jugador: jugadorObjetivo, liga_destino: ligaDestino, posicion})
       });
@@ -192,7 +192,7 @@ export default function LaboratorioIAPage() {
     if (!jugadorObjetivo) return;
     setCargando(true); setModoActivo('potencial'); limpiarResultados();
     try {
-      const res = await fetch(`http://localhost:8000/api/predecir_potencial/${encodeURIComponent(jugadorObjetivo)}?posicion=${encodeURIComponent(posicion)}`);
+      const res = await fetch(`[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/predecir_potencial/${encodeURIComponent(jugadorObjetivo)}?posicion=${encodeURIComponent(posicion)}`);
       const data = await res.json();
       
       if (!data.error) {

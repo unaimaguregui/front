@@ -294,7 +294,7 @@ export default function FichaJugador() {
         }
 
         // 2. Le pasamos el parámetro al backend (añade ${ligasQuery} al final)
-        const url = `http://localhost:8000/api/ficha/${encodeURIComponent(nombreJugador)}?posicion=${encodeURIComponent(posicion)}&id=${encodeURIComponent(idWyscout)}${ligasQuery}`;
+        const url = `[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/ficha/${encodeURIComponent(nombreJugador)}?posicion=${encodeURIComponent(posicion)}&id=${encodeURIComponent(idWyscout)}${ligasQuery}`;
         const res = await fetch(url);
         const json = await res.json();
         setData(json);

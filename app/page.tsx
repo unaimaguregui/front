@@ -202,7 +202,7 @@ export default function BuscadorPro() {
       }
 
       try {
-        const res = await fetch("http://localhost:8000/api/catalogo");
+        const res = await fetch("[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/catalogo");
         const data = await res.json();
         if (!data.error && Array.isArray(data)) {
           sessionStorage.setItem("fscouting_catalogo", JSON.stringify(data));
@@ -226,7 +226,7 @@ export default function BuscadorPro() {
         return;
       }
       try {
-        const res = await fetch("http://localhost:8000/api/equipos");
+        const res = await fetch("[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/equipos");
         const data = await res.json();
         if (Array.isArray(data)) {
           setEquiposDisponibles(data);

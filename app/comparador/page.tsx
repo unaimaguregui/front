@@ -24,7 +24,7 @@ export default function ComparadorPage() {
 
   // Cargar autocompletado al iniciar
   useEffect(() => {
-    fetch("http://localhost:8000/api/jugadores")
+    fetch("[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/jugadores")
       .then(res => res.json())
       .then(data => { if (Array.isArray(data)) setListaNombres(data); })
       .catch(() => console.error("Error cargando nombres"));
@@ -44,18 +44,18 @@ export default function ComparadorPage() {
 
     try {
       // 1. Fichas individuales (Secuencial para no bloquear DuckDB)
-      const url1 = `http://localhost:8000/api/ficha/${encodeURIComponent(jugador1.trim())}?posicion=${encodeURIComponent(posicion)}`;
+      const url1 = `[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/ficha/${encodeURIComponent(jugador1.trim())}?posicion=${encodeURIComponent(posicion)}`;
       const res1 = await fetch(url1);
       const json1 = await res1.json();
       if (json1.detail) throw new Error(`Jugador A: ${json1.detail}`);
 
-      const url2 = `http://localhost:8000/api/ficha/${encodeURIComponent(jugador2.trim())}?posicion=${encodeURIComponent(posicion)}`;
+      const url2 = `[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/ficha/${encodeURIComponent(jugador2.trim())}?posicion=${encodeURIComponent(posicion)}`;
       const res2 = await fetch(url2);
       const json2 = await res2.json();
       if (json2.detail) throw new Error(`Jugador B: ${json2.detail}`);
 
       // 2. 🚀 NUEVO: Pedimos a la IA que redacte el veredicto
-      const resH2H = await fetch("http://localhost:8000/api/comparar_h2h", {
+      const resH2H = await fetch("[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/comparar_h2h", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ jugador1: jugador1.trim(), jugador2: jugador2.trim() })
