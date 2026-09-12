@@ -104,7 +104,7 @@ export default function TeamFitPage() {
   useEffect(() => {
     async function cargarDatos() {
       try {
-        const resEq = await fetch("[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/equipos_tacticos");
+        const resEq = await fetch(`${API_URL}`/api/equipos_tacticos");
         const dataEq = await resEq.json();
         
         // Carga de Equipos Detallados para la Cascada
@@ -136,7 +136,7 @@ export default function TeamFitPage() {
         }
 
         // Carga del Catálogo Global
-        const resCat = await fetch("[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/catalogo");
+        const resCat = await fetch(`${API_URL}`/api/catalogo");
         const dataCat = await resCat.json();
         if (Array.isArray(dataCat)) {
           setLigasDisponibles(Array.from(new Set(dataCat.map((d: any) => d.liga))).sort() as string[]);
@@ -281,7 +281,7 @@ export default function TeamFitPage() {
     };
 
     try {
-      const res = await fetch("[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/team_fit", {
+      const res = await fetch(`${API_URL}`/api/team_fit", {
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
       });
       const data = await res.json();

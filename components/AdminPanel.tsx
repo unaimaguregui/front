@@ -22,7 +22,7 @@ export default function PanelAdministracion() {
     setResultado(null);
     try {
       // Ajusta la URL base si tu API está desplegada en otro sitio
-      const res = await fetch(`https://back-hssb.onrender.com/api/admin/${endpoint}`, { method: 'POST' });
+      const res = await fetch(`${API_URL}/api/admin/${endpoint}`, { method: 'POST' });
       const data = await res.json();
       
       if (res.ok) {

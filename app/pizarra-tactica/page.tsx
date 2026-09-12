@@ -128,21 +128,21 @@ export default function PizarraTactica() {
   useEffect(() => { cargarShortlist(); cargarSquad(); }, []);
 
   // 🚀 TODAS LAS PETICIONES APUNTAN A LOCALHOST CORRECTAMENTE
-  const cargarShortlist = () => { fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/preseleccion/get').then(r=>r.json()).then(setShortlist).catch(console.error); };
+  const cargarShortlist = () => { fetch('${API_URL}/api/preseleccion/get').then(r=>r.json()).then(setShortlist).catch(console.error); };
   
   const cargarSquad = () => {
-    fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/squad/get').then(r=>r.json()).then(data => {
+    fetch('${API_URL}/api/squad/get').then(r=>r.json()).then(data => {
       setPlantilla(data.plantilla || []); setFichajes(data.fichajes || []); setEliminados(data.eliminados || []);
     }).catch(console.error);
   };
 
   const eliminarShortlist = async (nombre: string) => {
-    await fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/preseleccion/remove', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
+    await fetch('${API_URL}/api/preseleccion/remove', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
     cargarShortlist();
   };
 
   const añadirPizarra = async (nombre: string) => {
-    await fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/squad/add', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
+    await fetch('${API_URL}/api/squad/add', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
     cargarSquad();
   };
 
@@ -153,22 +153,22 @@ export default function PizarraTactica() {
   };
 
   const moverJugador = (nombre: string, x: number, y: number) => {
-    fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/squad/move', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre, x, y}) });
+    fetch('${API_URL}/api/squad/move', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre, x, y}) });
   };
 
   const quitarJugador = async (nombre: string) => {
-    await fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/squad/remove', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
+    await fetch('${API_URL}/api/squad/remove', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
     cargarSquad();
   };
 
   const restaurarJugador = async (nombre: string) => {
-    await fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/squad/restore', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
+    await fetch('${API_URL}/api/squad/restore', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
     cargarSquad();
     if (eliminados.length === 1) setVerPapelera(false);
   };
 
   const toggleFilial = async (nombre: string) => {
-    await fetch('[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/squad/toggle_filial', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
+    await fetch('${API_URL}/api/squad/toggle_filial', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nombre}) });
     cargarSquad();
   };
 

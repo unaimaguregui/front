@@ -3,6 +3,7 @@ import { useState, useEffect, Fragment } from 'react';
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, Loader2, ShieldCheck, MapPin, Star } from "lucide-react";
 import PlotFigure from "@/components/PlotFigure";
+import { API_URL } from "@/lib/api";
 
 // ---------- Tipos y Helpers para Posiciones ----------
 interface PosicionItem { posicion: string; pct: number; }
@@ -97,7 +98,7 @@ function HistorialEvolutivo({ wyscoutId, posicion }: { wyscoutId: string, posici
   useEffect(() => {
     if (!wyscoutId) return;
     
-    fetch(`https://back-hssb.onrender.com/api/evolucion/${wyscoutId}?posicion=${encodeURIComponent(posicion)}`)
+    fetch(`${API_URL}/api/evolucion/${wyscoutId}?posicion=${encodeURIComponent(posicion)}`)
       .then((res) => {
         if (!res.ok) throw new Error("Sin datos históricos");
         return res.json();
@@ -294,7 +295,7 @@ export default function FichaJugador() {
         }
 
         // 2. Le pasamos el parámetro al backend (añade ${ligasQuery} al final)
-        const url = `[https://back-hssb.onrender.com](https://back-hssb.onrender.com)/api/ficha/${encodeURIComponent(nombreJugador)}?posicion=${encodeURIComponent(posicion)}&id=${encodeURIComponent(idWyscout)}${ligasQuery}`;
+        const url = `${API_URL}/api/ficha/${encodeURIComponent(nombreJugador)}?posicion=${encodeURIComponent(posicion)}&id=${encodeURIComponent(idWyscout)}${ligasQuery}`;
         const res = await fetch(url);
         const json = await res.json();
         setData(json);

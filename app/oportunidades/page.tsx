@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { TrendingUp, TrendingDown, Search, ArrowRight, Activity, BarChart2, Loader2, X } from 'lucide-react';
 import Link from 'next/link';
 import PlotFigure from "@/components/PlotFigure"; // 🚀 IMPORTAMOS TU GRÁFICO PLOTLY
+import { API_URL } from "@/lib/api";
 
 // Mapeo básico de posiciones para los selectores
 const POSICIONES_ESTILOS: Record<string, string[]> = {
@@ -28,7 +29,7 @@ function RadarComparativo({ wyscoutId, posicion, tempPasada, tempActual, tipo }:
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://back-hssb.onrender.com/api/evolucion/${wyscoutId}?posicion=${encodeURIComponent(posicion)}`)
+    fetch(`${API_URL}/api/evolucion/${wyscoutId}?posicion=${encodeURIComponent(posicion)}`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -169,7 +170,7 @@ export default function OportunidadesMercado() {
   useEffect(() => {
     async function fetchCatalogo() {
       try {
-        const res = await fetch("https://back-hssb.onrender.com/api/catalogo");
+        const res = await fetch(`${API_URL}`/api/catalogo");
         const data = await res.json();
         if (Array.isArray(data)) {
           const ligasUnicas = Array.from(new Set(data.map((d: any) => d.liga))) as string[];
@@ -211,8 +212,8 @@ export default function OportunidadesMercado() {
 
     try {
       const [resExp, resGan] = await Promise.all([
-        fetch("https://back-hssb.onrender.com/api/explosiones", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
-        fetch("https://back-hssb.onrender.com/api/gangas", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        fetch(`${API_URL}`/api/explosiones", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
+        fetch(`${API_URL}`/api/gangas", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       ]);
 
       const dataExp = await resExp.json();

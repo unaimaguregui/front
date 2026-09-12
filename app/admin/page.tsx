@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { Database, Activity, CheckCircle2, AlertCircle, Loader2, Server } from 'lucide-react';
+import { API_URL } from "@/lib/api";
 
 export default function PanelAdministracion() {
   const [loading, setLoading] = useState<'etl' | 'curar' | null>(null);
@@ -21,7 +22,7 @@ export default function PanelAdministracion() {
     setLoading(tipo);
     setResultado(null);
     try {
-      const res = await fetch(`https://back-hssb.onrender.com/api/admin/${endpoint}`, { method: 'POST' });
+      const res = await fetch(`${API_URL}/api/admin/${endpoint}`, { method: 'POST' });
       const data = await res.json();
       
       if (res.ok) {
