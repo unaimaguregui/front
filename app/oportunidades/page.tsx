@@ -170,7 +170,7 @@ export default function OportunidadesMercado() {
   useEffect(() => {
     async function fetchCatalogo() {
       try {
-        const res = await fetch(`${API_URL}`/api/catalogo");
+        const res = await fetch(`${API_URL}/api/catalogo");
         const data = await res.json();
         if (Array.isArray(data)) {
           const ligasUnicas = Array.from(new Set(data.map((d: any) => d.liga))) as string[];
@@ -212,8 +212,8 @@ export default function OportunidadesMercado() {
 
     try {
       const [resExp, resGan] = await Promise.all([
-        fetch(`${API_URL}`/api/explosiones", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
-        fetch(`${API_URL}`/api/gangas", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        fetch(`${API_URL}/api/explosiones", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
+        fetch(`${API_URL}/api/gangas", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       ]);
 
       const dataExp = await resExp.json();

@@ -202,7 +202,7 @@ export default function BuscadorPro() {
       }
 
       try {
-        const res = await fetch(`${API_URL}`/api/catalogo");
+        const res = await fetch(`${API_URL}/api/catalogo");
         const data = await res.json();
         if (!data.error && Array.isArray(data)) {
           sessionStorage.setItem("fscouting_catalogo", JSON.stringify(data));
@@ -226,7 +226,7 @@ export default function BuscadorPro() {
         return;
       }
       try {
-        const res = await fetch(`${API_URL}`/api/equipos");
+        const res = await fetch(`${API_URL}/api/equipos");
         const data = await res.json();
         if (Array.isArray(data)) {
           setEquiposDisponibles(data);
@@ -312,7 +312,7 @@ export default function BuscadorPro() {
       };
 
     try {
-      const response = await fetch(`${API_URL}`/api/procesar", {
+      const response = await fetch(`${API_URL}/api/procesar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

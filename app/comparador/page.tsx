@@ -25,7 +25,7 @@ export default function ComparadorPage() {
 
   // Cargar autocompletado al iniciar
   useEffect(() => {
-    fetch(`${API_URL}`/api/jugadores")
+    fetch(`${API_URL}/api/jugadores")
       .then(res => res.json())
       .then(data => { if (Array.isArray(data)) setListaNombres(data); })
       .catch(() => console.error("Error cargando nombres"));
@@ -56,7 +56,7 @@ export default function ComparadorPage() {
       if (json2.detail) throw new Error(`Jugador B: ${json2.detail}`);
 
       // 2. 🚀 NUEVO: Pedimos a la IA que redacte el veredicto
-      const resH2H = await fetch(`${API_URL}`/api/comparar_h2h", {
+      const resH2H = await fetch(`${API_URL}/api/comparar_h2h", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ jugador1: jugador1.trim(), jugador2: jugador2.trim() })
