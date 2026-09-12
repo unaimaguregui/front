@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { Database, Activity, CheckCircle2, AlertCircle, Loader2, Server } from 'lucide-react';
+import { API_URL } from "@/lib/api";
 
 export default function PanelAdministracion() {
   const [loading, setLoading] = useState<'etl' | 'curar' | null>(null);
