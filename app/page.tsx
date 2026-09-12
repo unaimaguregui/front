@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Search, Loader2, X, Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { API_URL } from "@/lib/api";
 
 // 🌍 DICCIONARIO DE PAÍSES: Mapeamos las competiciones de Wyscout a su país
 const MAPA_PAISES: Record<string, string[]> = {
@@ -202,7 +203,7 @@ export default function BuscadorPro() {
       }
 
       try {
-        const res = await fetch(`${API_URL}/api/catalogo");
+        const res = await fetch(`${API_URL}/api/catalogo`);
         const data = await res.json();
         if (!data.error && Array.isArray(data)) {
           sessionStorage.setItem("fscouting_catalogo", JSON.stringify(data));
@@ -312,7 +313,7 @@ export default function BuscadorPro() {
       };
 
     try {
-      const response = await fetch(`${API_URL}/api/procesar", {
+      const response = await fetch(`${API_URL}/api/procesar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

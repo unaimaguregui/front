@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Sliders, Loader2, Shield, BrainCircuit, ArrowRight, Activity, Target } from "lucide-react";
 import { useRouter } from "next/navigation";
 import PlotFigure from "@/components/PlotFigure";
+import { API_URL } from "@/lib/api";
 
 const POSICIONES = [
   "Portero", "Central", "Lateral Izquierdo", "Lateral Derecho", 
@@ -104,7 +105,7 @@ export default function TeamFitPage() {
   useEffect(() => {
     async function cargarDatos() {
       try {
-        const resEq = await fetch(`${API_URL}/api/equipos_tacticos");
+        const resEq = await fetch(`${API_URL}/api/equipos_tacticos`);
         const dataEq = await resEq.json();
         
         // Carga de Equipos Detallados para la Cascada
@@ -281,7 +282,7 @@ export default function TeamFitPage() {
     };
 
     try {
-      const res = await fetch(`${API_URL}/api/team_fit", {
+      const res = await fetch(`${API_URL}/api/team_fit`, {
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
       });
       const data = await res.json();

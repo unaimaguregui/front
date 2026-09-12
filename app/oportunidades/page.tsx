@@ -170,7 +170,7 @@ export default function OportunidadesMercado() {
   useEffect(() => {
     async function fetchCatalogo() {
       try {
-        const res = await fetch(`${API_URL}/api/catalogo");
+        const res = await fetch(`${API_URL}/api/catalogo`);
         const data = await res.json();
         if (Array.isArray(data)) {
           const ligasUnicas = Array.from(new Set(data.map((d: any) => d.liga))) as string[];
