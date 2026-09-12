@@ -226,7 +226,7 @@ export default function BuscadorPro() {
         return;
       }
       try {
-        const res = await fetch(`${API_URL}/api/equipos");
+        const res = await fetch(`${API_URL}/api/equipos`);
         const data = await res.json();
         if (Array.isArray(data)) {
           setEquiposDisponibles(data);

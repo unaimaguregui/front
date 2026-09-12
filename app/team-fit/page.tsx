@@ -136,7 +136,7 @@ export default function TeamFitPage() {
         }
 
         // Carga del Catálogo Global
-        const resCat = await fetch(`${API_URL}/api/catalogo");
+        const resCat = await fetch(`${API_URL}/api/catalogo`);
         const dataCat = await resCat.json();
         if (Array.isArray(dataCat)) {
           setLigasDisponibles(Array.from(new Set(dataCat.map((d: any) => d.liga))).sort() as string[]);

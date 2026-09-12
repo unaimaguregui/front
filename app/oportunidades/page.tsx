@@ -212,8 +212,8 @@ export default function OportunidadesMercado() {
 
     try {
       const [resExp, resGan] = await Promise.all([
-        fetch(`${API_URL}/api/explosiones", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
-        fetch(`${API_URL}/api/gangas", { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        fetch(`${API_URL}/api/explosiones`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
+        fetch(`${API_URL}/api/gangas`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       ]);
 
       const dataExp = await resExp.json();
